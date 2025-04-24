@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}Predict Accident Severity{% endblock %}
+
+{% block content %}
+<h2>Enter Accident Details</h2>
+<p>Please provide the following information based on the accident conditions. These were the key factors identified by our analysis.</p>
+
+<form action="{{ url_for('predict') }}" method="POST" class="prediction-form">
+    {% for feature in feature_names %}
+        <div class="form-group">
+            <label for="{{ feature }}">{{ feature.replace('_', ' ').title() }}:</label>
+            {% if feature == 'TIME' %}
+                <div style="display: flex; gap: 10px;">
+                    <input type="number" id="hour" name="hour" min="0" max="23" required placeholder="Hour (0-23)">
+                    <input type="number" id="minute" name="minute" min="0" max="59" required placeholder="Minute (0-59)">
+                </div>
+            {% elif feature == 'INVAGE' %}
+                <input type="text" id="{{ feature }}" name="{{ feature }}" required
+                       placeholder="Enter age">
+            {% elif feature == 'INJURY' %}
+                <select id="{{ feature }}" name="{{ feature }}" required>
+                    <option value="" disabled selected>Select Injury Severity</option>
+                    <option value="Major">Major</option>
+                    <option value="Minor">Minor</option>
+                    <option value="None">None</option>
+                </select>
+            {% elif feature == 'STREET1' %}
+                <input type="text" id="{{ feature }}" name="{{ feature }}" required
+                       placeholder="Enter first street name">
+            {% elif feature == 'STREET2' %}
+                <input type="text" id="{{ feature }}" name="{{ feature }}"
+                       placeholder="Enter intersecting street name (if applicable)">
+            {% elif feature == 'VEHTYPE' %}
+                <input type="text" id="{{ feature }}" name="{{ feature }}" required
+                       placeholder="Enter the Vehicle Type">
+            {% elif feature == 'LIGHT' %}
+                <select id="{{ feature }}" name="{{ feature }}" required>
+                    <option value="" disabled selected>Select Light Condition</option>
+                    <option value="Dark">Dark</option>
+                    <option value="Dark artificial">Dark with Artificial Light</option>
+                    <option value="Daylight">Daylight</option>
+                    <option value="Dusk">Dusk</option>
+                    <option value="Dusk artificial">Dusk with Artificial Light</option>
+                </select>
+            {% else %}
+                <input type="number" id="{{ feature }}" name="{{ feature }}" step="any" required
+                       placeholder="Enter value for {{ feature.replace('_', ' ').lower() }}">
+            {% endif %}
+        </div>
+    {% endfor %}
+
+    <div class="form-actions">
+        <button type="submit" class="button predict-button">Predict Severity</button>
+        <button type="reset" class="button reset-button">Reset Fields</button>
+    </div>
+</form>
+{% endblock %}

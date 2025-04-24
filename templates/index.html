@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}Home - Model Selection{% endblock %}
+
+{% block content %}
+<section class="intro-section">
+    <h2>Welcome to the KSI Prediction Project!</h2>
+    <p>
+        Every year, traffic accidents result in tragic losses and serious injuries (KSI - Killed or Seriously Injured).
+        Understanding the factors that contribute to the severity of an accident is crucial for developing effective
+        road safety measures.
+    </p>
+    <p>
+        In this project, we analyzed a dataset of traffic collisions to build a machine learning model capable of
+        predicting whether an accident is likely to be Fatal or Non-Fatal based on various contributing factors.
+    </p>
+</section>
+
+<section class="model-evaluation">
+    <h2>Choosing the Right Tool: Model Evaluation</h2>
+    <p>
+        We explored several machine learning algorithms to find the most accurate predictor. Here's a summary of
+        how different models performed on our test data:
+    </p>
+    <table>
+        <thead>
+            <tr>
+                <th>Model</th>
+                <th>Accuracy</th>
+                <th>Precision</th>
+                <th>Recall</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for name, metrics in evaluations.items() %}
+            <tr class="{{ 'best-model-row' if name == best_model else '' }}">
+                <td>{{ name }}</td>
+                <td>{{ metrics.Accuracy }}</td>
+                <td>{{ metrics.Precision }}</td>
+                <td>{{ metrics.Recall }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p class="highlight">
+        Based on these results, the <strong>{{ best_model }}</strong> model demonstrated the highest accuracy and a good balance
+        of precision and recall. Therefore, we selected it for our prediction tool.
+    </p>
+</section>
+
+<section class="next-step">
+    <h2>Let's Predict!</h2>
+    <p>
+        Now, let's use our trained {{ best_model }} model to predict the severity of a hypothetical accident.
+        Click the button below to enter the details.
+    </p>
+    <a href="{{ url_for('predict_form') }}" class="button predict-button">Test the Model</a>
+</section>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Prediction Result{% endblock %}
+
+{% block content %}
+<h2>Prediction Result</h2>
+
+<div class="result-display {{ prediction_class }}"> <p>Based on the provided details:</p>
+    <p class="prediction-outcome">The predicted accident severity is: <strong>{{ prediction_text }}</strong></p>
+    {% if confidence %}
+    <p class="prediction-confidence">(Model Confidence: {{ confidence }})</p>
+    {% endif %}
+</div>
+
+{% if user_input %}
+<div class="user-input-summary">
+    <h3>Input Summary:</h3>
+    <ul>
+        {% for feature, value in user_input.items() %}
+        <li><strong>{{ feature.replace('_', ' ').title() }}:</strong> {{ value }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+<div class="result-actions">
+    <a href="{{ url_for('predict_form') }}" class="button">Predict Again</a>
+    <a href="{{ url_for('index') }}" class="button secondary-button">Back to Home</a>
+</div>
+{% endblock %}

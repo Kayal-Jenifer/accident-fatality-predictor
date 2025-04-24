@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Error{% endblock %}
+
+{% block content %}
+<h2>Oops! Something went wrong.</h2>
+
+<div class="error-message">
+    <p>We encountered an error:</p>
+    <p><strong>{{ error_message | default('An unspecified error occurred. Please check the server logs or try again.') }}</strong></p>
+</div>
+
+<div class="error-actions">
+    <a href="{{ url_for('predict_form') }}" class="button">Try Prediction Again</a>
+    <a href="{{ url_for('index') }}" class="button secondary-button">Back to Home</a>
+</div>
+{% endblock %}
