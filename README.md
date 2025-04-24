@@ -37,9 +37,6 @@ It predicts whether a road accident is likely to result in a **fatality** or not
 # Access the web app at:
 📍 http://127.0.0.1:5000/ 
 
-OR Run the Flask web application
-python app.py
-
 📁 Dataset Info
 
 Source: Toronto Police Service Open Data Portal
