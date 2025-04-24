@@ -1,4 +1,4 @@
-# 🚗 Accident Fatality Predictor – AI Project (COMP 247)
+# Accident Fatality Predictor – AI Project (COMP 247)
 
 This project is a supervised machine learning application developed as part of the COMP 247 course project. 
 It predicts whether a road accident is likely to result in a **fatality** or not, using real-world collision data from Toronto Police Services.
@@ -34,11 +34,11 @@ It predicts whether a road accident is likely to result in a **fatality** or not
 - Flask (for API deployment)
 - HTML + Jinja Templates
 
-# Run the Flask web application
-python app.py
-
 # Access the web app at:
-📍 http://127.0.0.1:5000/
+📍 http://127.0.0.1:5000/ 
+
+OR Run the Flask web application
+python app.py
 
 📁 Dataset Info
 
