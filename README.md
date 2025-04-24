@@ -26,14 +26,6 @@ It predicts whether a road accident is likely to result in a **fatality** or not
 - Web API built with Flask
 - HTML frontend for user input and prediction
 
-## 🛠️ Technologies Used
-
-- Python
-- Pandas, NumPy, Scikit-learn
-- Matplotlib, Seaborn
-- Flask (for API deployment)
-- HTML + Jinja Templates
-
 # Access the web app at:
 📍 http://127.0.0.1:5000/ 
 
