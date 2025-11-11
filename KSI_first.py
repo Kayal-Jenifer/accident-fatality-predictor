@@ -475,17 +475,6 @@ print("\n--- Model Training and Saving Process Completed ---")
 
 
 
-
-
-
-
-
-# Rest of the code is only for testing and it wont work without an additional step
-# If in case professor is seeing this you have to make an INVAGE_encoder.pkl from the encoding loop
-# Currently the encoding loop doent encode invage as it is being encoded in app.py
-
-
-
 '''# --- 12. Test Predictions on Sample Instances (using final pipeline) ---
 
 # Check if necessary components are available before testing
@@ -661,5 +650,6 @@ else:
         print("Reason: 'selected_features' list not found.")
 
 # --- End of Model Training Script ---
+
 
 '''
